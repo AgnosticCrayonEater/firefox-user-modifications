@@ -1,0 +1,163 @@
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/content/multi_column_addons.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Makes addon manager show addons in 2-4 columns based on available width */
+/* You can use compact_addons_manager.css with this to make things even more, well, compact  */
+/* Compatible with addon_manage_buttons_without_popup.css */
+
+@-moz-document url-prefix("chrome://mozapps/content/extensions/aboutaddons.html"), url("about:addons"){
+  
+  :root{  overflow-x: hidden } /* Remove this if it causes horizontal scrolling problems */
+  
+  @media (min-width:720px){
+    #main{ max-width: unset !important; padding-right: 28px; }
+    addon-list > section,
+    recommended-addon-list{
+      padding: 1em;
+      display: grid;
+      grid-template-areas: "hd hd" "cd cd";
+      grid-auto-columns: 1fr;
+      column-gap: 1em;
+     
+    }
+  
+    addon-card .card-contents{ width: unset !important; white-space: initial !important; }
+  
+    .card-heading-image{ max-width: calc(100% + 32px) }
+    section > h2{ grid-area: hd }
+    addon-card{
+      padding-bottom: 0px !important;
+      padding-top: 0px !important;
+      grid-area: auto;
+    }
+    addon-card .addon-description{ max-height: 3em; scrollbar-width: thin; }
+  }
+  
+  @media (min-width:1220px){
+    addon-list > section,
+    recommended-addon-list{
+      grid-template-areas: "hd hd hd" "cd cd cd";
+    }
+  }
+  
+  @media (min-width:1720px){
+    addon-list > section,
+    recommended-addon-list{
+      grid-template-areas: "hd hd hd hd" "cd cd cd cd";
+    }
+  }
+}
+
+
+* { 
+	scrollbar-color: #afafaf #2c2c2c !important;
+}
+
+@-moz-document url("about:privatebrowsing"){
+	html:not(#ublock0-epicker), html:not(#ublock0-epicker) body, #newtab-customize-overlay {
+        background-color: #232324 !important; /*#232324*/
+	}
+	#search-handoff-button {
+        background-color: #0000004d !important;
+        border: none !important;
+        box-shadow: none !important;
+		border-bottom: 1px solid #b821ec82 !important;
+		border-radius: 10px 10px 10px 10px !important;
+    }
+	
+	.fake-textbox{ color: #ffffff5e !important;}
+	
+	#search-handoff-button:active > .fake-textbox, 
+	#search-handoff-button:hover > .fake-textbox,
+	#search-handoff-button:focus > .fake-textbox,
+	#search-handoff-button:focus-within > .fake-textbox{
+        color: white !important;
+		opacity: 0.8 !important;
+		
+    }
+	.fake-caret {background: rgb(255, 255, 255) !important;}
+	.logo-and-wordmark .wordmark {
+		fill: #b821ec !important; 
+	
+	}
+}
+ 
+  
+  @-moz-document url("about:home"),url("about:newtab"){
+    html:not(#ublock0-epicker), html:not(#ublock0-epicker) body, #newtab-customize-overlay {
+        background-color: #232324 !important; /*#232324*/
+		background: url(image/wallpaper.jpg) !important ; 
+		background-size: cover !important ;
+		background-blend-mode: darken;
+	}
+	
+	.search-wrapper .search-handoff-button {
+        background-color: #1e1e1e99 !important;
+        color: #ffffff5e !important;
+        border: none !important;
+        box-shadow: none !important;
+		border-bottom: 1px solid #ffffff26 !important;
+		border-radius: 10px 10px 10px 10px !important;
+		-webkit-backdrop-filter: blur(12px) !important;
+		backdrop-filter: blur(12px) !important;	
+	  }
+	.search-wrapper .logo-and-wordmark {
+		opacity: 0.9 !important;
+		display:none !important;
+	}
+	
+	.body-wrapper .tile {
+			background-image: url(image/noise-512x512.png) !important;
+		background-color:  #1e1e1e99  !important;
+		-webkit-backdrop-filter: blur(10px) !important;
+		backdrop-filter: blur(10px) !important;
+	}
+	
+	.top-site-outer .top-site-icon {
+		background-color:transparent !important;
+	}
+	
+	#root .customize-menu {
+		background-image: url(image/noise-512x512.png) !important;
+		background-color: #1e1e1e8C !important;
+		-webkit-backdrop-filter: blur(12px) !important;
+		backdrop-filter: blur(12px) !important;	
+	}
+	
+	.home-section .section .selector {
+		background-color: #1e1e1e80 !important;
+	}
+	
+	.top-sites-list:not(.dnd-active) .top-site-outer:hover:not(.active) {
+		background-image: url(image/noise-512x512.png) !important;
+		background-color: #1e1e1e80 !important;
+		-webkit-backdrop-filter: blur(10px) !important;
+		backdrop-filter: blur(10px) !important;	
+	}
+	  
+	.search-wrapper input:focus {
+        color: white !important;
+    }
+	.search-wrapper .search-button {
+        fill: #ffffff5e !important;
+    }
+	.search-wrapper .search-button:focus,
+    .search-wrapper .search-button:hover {
+        background-color: transparent !important;
+        fill: white !important;
+    }
+	.outer-wrapper.newtab-experience .search-wrapper .search-handoff-button .fake-caret {
+		top: 12px !important;
+	}
+	
+	.outer-wrapper.newtab-experience .search-wrapper .search-inner-wrapper {
+		min-height: 42px !important;
+	}
+	
+}
+
+@-moz-document url("about:blank"){ 
+	html:not(#ublock0-epicker), html:not(#ublock0-epicker) body, #newtab-customize-overlay {
+			background-color: #232324 !important; /*#232324*/
+		}
+}
